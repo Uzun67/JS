@@ -154,9 +154,83 @@ boxes.forEach((box) => {
 });
 console.log(boxes);
 
-// ----------------------------------------------
-// addEventListener vs onclick
+// -------------------------------------------------------
+// Stop propagation
 
-document.body.onclick = function () {
-  console.log("click");
+questionContainer.addEventListener("click", (e) => {
+  // alert("test");
+  e.stopPropagation();
+});
+
+// removeEventlistener
+
+// ------------------------------------------------------
+// BOM Browser object model
+
+/*console.log(window.innerHeight);
+console.log(window.scrollY);
+
+window.open("http://google.com", "cours js", "height=600, width=800"); */
+
+// Evenement adossés à window
+
+//confirm
+btn2.addEventListener("click", () => {
+  confirm("Etes vous sûr ?");
+});
+
+// prompt
+
+btn1.addEventListener("click", () => {
+  let answer = prompt("Enrtrez votre nom !");
+
+  questionContainer.innerHTML += `<h3>Bravo ${answer}</h3>`;
+});
+
+// Timer, compte à rebours
+setTimeout(() => {
+  questionContainer.style.borderRadius = "300px";
+}, 2000);
+/*
+let interval = setInterval(() => {
+  document.body.innerHTML += `<div class='box'> 
+  <h2>Nouvelle boite !</h2>
+  </div>`;
+}, 1000);
+// pour retirer un élément du dom et  pour stopper l'interval
+document.body.addEventListener("click", (e) => {
+  // e.target.remove();
+  clearInterval(interval);
+});
+*/
+// Location
+/*
+console.log(location.href);
+console.log(location.host);
+console.log(location.pathname);
+console.log(location.search);
+*/
+
+// location.replace("http://google.com");renvoie sur le lien
+/*
+window.onload = () => {
+  // location.href = "http://youtube.com";
 };
+*/
+
+// ------------History----------------
+
+// console.log(history);
+
+// window.history.back();
+
+// history.go(-2);
+
+// ------------------SetProperty------------------
+
+window.addEventListener("mousemove", (e) => {
+  console.log(e);
+
+  nav.style.setProperty("--x", e.layerX + "px");
+  nav.style.setProperty("--y", e.layerY + "px");
+});
